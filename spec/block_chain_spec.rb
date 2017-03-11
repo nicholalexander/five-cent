@@ -3,8 +3,8 @@ require 'spec_helper.rb'
   describe "BlockChain" do
     context "generate_genesis_block" do
       before do
-        @time_now = '10001010001'
-        allow(Time).to receive(:now).and_return(@time_now)
+        @time_now = 1489198803239
+        allow(DateTime).to receive_message_chain(:now, :strftime).and_return(@time_now)
         @initial_block = BlockChain.generate_genesis_block
       end
 
@@ -26,6 +26,10 @@ require 'spec_helper.rb'
 
       it "should have a time stamp of Time.now" do
         expect(@initial_block.time_stamp).to eq(@time_now)
+      end
+
+      it "should have a time stamp in seconds since epoch" do
+        expect(@initial_block.time_stamp.class).to eq(Integer)
       end
 
         

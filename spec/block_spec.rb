@@ -16,9 +16,4 @@ describe "block" do
       expect{Block.new(index: 3)}.to raise_error(ArgumentError)
   end
 
-
-  it "should do this blurgh thing" do
-    expect(Block.blurgh).to eq("blurgh")
-  end
-
 end

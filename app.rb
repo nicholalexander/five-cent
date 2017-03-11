@@ -6,8 +6,11 @@ configure do
 end
 
 get '/' do
-  'blonk'
+  'this is five-cent.'
 end
 
+get '/blocks' do
+end
 
-
+post '/mine_block' do
+end

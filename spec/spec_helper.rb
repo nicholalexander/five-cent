@@ -5,7 +5,11 @@ require 'pry'
 ENV['RACK_ENV'] = 'test'
 
 require File.expand_path '../../app.rb', __FILE__
-require File.expand_path '../../lib/block.rb', __FILE__
+
+# require the lib folder
+Dir[File.expand_path '../../lib/*', __FILE__].each do |file|
+  require file
+end
 
 module RSpecMixin
   include Rack::Test::Methods

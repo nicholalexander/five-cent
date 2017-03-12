@@ -3,11 +3,11 @@
 directories %w(. spec lib) \
  .select{|d| Dir.exists?(d) ? d : UI.warning("Directory #{d} does not exist")}
 
+
+
 guard :rspec, cmd: "bundle exec rspec" do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
-
-  # Feel free to open issues for suggestions and improvements
 
   # RSpec files
   rspec = dsl.rspec
@@ -18,6 +18,8 @@ guard :rspec, cmd: "bundle exec rspec" do
   # Ruby files
   ruby = dsl.ruby
   dsl.watch_spec_files_for(ruby.lib_files)
+
+  watch('./app.rb') { rspec.spec_dir }
 
   # Rails files
   rails = dsl.rails(view_extensions: %w(erb haml slim))

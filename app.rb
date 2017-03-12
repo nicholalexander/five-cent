@@ -1,10 +1,9 @@
-# app.rb
 require 'sinatra'
 require 'rubygems'
 require 'bundler'
-require 'pry'
 
 Bundler.require(:default)
+Bundler.require(Sinatra::Base.environment)
 
 Dir["#{File.dirname(__FILE__)}/lib/*.rb"].each {|file| require file }
 
@@ -15,7 +14,7 @@ configure do
 end
 
 get '/' do
-  'this is five-cent.'
+  'this is five-cents.'
 end
 
 get '/blocks' do

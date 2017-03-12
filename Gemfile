@@ -7,6 +7,8 @@ gem 'haml'
 
 gem 'thin'
 
+gem 'json'
+
 group :development do
   gem 'shotgun'
   gem 'guard'

@@ -22,12 +22,15 @@ describe "five-cent" do
     end
   end
 
-  context "initialize" do
-    it "should create a blockchain" do
-    end
+  
+    # it "should create a blockchain when the app starts up" do
+    #   get '/blocks'
+    #   expect_body
+    #   expect(@block_chain).to exist
+    # end
 
 
-  end
+  
 
 
 end

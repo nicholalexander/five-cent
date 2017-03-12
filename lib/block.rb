@@ -10,6 +10,16 @@ class Block
     @block_hash = block_hash
   end
 
+  def to_hash
+    {
+      index: @index, 
+      previous_hash: @previous_hash, 
+      time_stamp: @time_stamp, 
+      data: @data,
+      block_hash: @block_hash
+    }
+  end
+
 end
   
 

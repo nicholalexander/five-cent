@@ -11,6 +11,7 @@ Dir["#{File.dirname(__FILE__)}/lib/*.rb"].each {|file| require file }
 configure do
   set :server, 'thin'
   @block_chain = BlockChain.new
+  set :block_chain, @block_chain
 end
 
 get '/' do
@@ -18,7 +19,8 @@ get '/' do
 end
 
 get '/blocks' do
-  
+  content_type :json
+  settings.block_chain.as_json
 end
 
 post '/mine_block' do

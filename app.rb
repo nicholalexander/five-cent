@@ -23,4 +23,7 @@ get '/blocks' do
 end
 
 post '/mine_block' do
+  # generate new block
+  # insert it into block chain
+  # display that block.
 end

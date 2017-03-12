@@ -1,6 +1,6 @@
 class Block 
 
-  attr_accessor :index, :previous_hash, :time_stamp, :data, :block_hash
+  attr_reader :index, :previous_hash, :time_stamp, :data, :block_hash
 
   def initialize(index:, previous_hash:, time_stamp:, data:, block_hash:)
     @index = index
@@ -9,7 +9,6 @@ class Block
     @data = data
     @block_hash = block_hash
   end
-  
 
   def to_hash
     { index: @index, 

@@ -20,6 +20,11 @@ class Block
     }
   end
 
+  def as_json
+    self.to_hash.to_json
+  end
+
+
 end
   
 

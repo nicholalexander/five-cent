@@ -34,10 +34,9 @@ describe "block" do
   end
 
   it "should render as json" do
-    expect(@block.to_hash.to_json).to eq(
+    expect(@block.as_json).to eq(
       "{\"index\":3,\"previous_hash\":\"asdf\",\"time_stamp\":1489198803239,\"data\":{\"data\":\"blurgh\"},\"block_hash\":\"asdf2\"}"
       )
   end
-
 
 end

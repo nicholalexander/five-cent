@@ -1,10 +1,19 @@
 require 'spec_helper.rb'
 
   describe "BlockChain" do
+
+    before do
+      @time_now = 1489198803239
+      allow(DateTime).to receive_message_chain(:now, :strftime).and_return(@time_now)
+      @block_chain = BlockChain.new
+    end
+
+
     context "generate_genesis_block" do
       before do
         @time_now = 1489198803239
         allow(DateTime).to receive_message_chain(:now, :strftime).and_return(@time_now)
+        
         @initial_block = BlockChain.generate_genesis_block
       end
 
@@ -31,18 +40,29 @@ require 'spec_helper.rb'
       it "should have a time stamp in seconds since epoch" do
         expect(@initial_block.time_stamp.class).to eq(Integer)
       end
-
-        
-      
-
     end
 
     context "initialize" do
       it "should have a genesis block at position 0" do
-        block_chain = BlockChain.new
-        expect(block_chain.blocks[0].data).to eq(:genesis_block)
+        @block_chain = BlockChain.new
+        expect(@block_chain.blocks[0].data).to eq(:genesis_block)
       end 
+    end
 
+    it "should render as hash" do
+      expect(@block_chain.to_hash).to eq(
+        { blocks: [
+            { index: 0, previous_hash: nil,
+              time_stamp: @time_now, 
+              data: :genesis_block,
+              block_hash: 'asdf' }
+          ]
+        }
+      )
+    end
+
+    it "should render as json" do
+      expect(@block_chain.as_json).to eq("{\"blocks\":[{\"index\":0,\"previous_hash\":null,\"time_stamp\":1489198803239,\"data\":\"genesis_block\",\"block_hash\":\"asdf\"}]}")
     end
 
     it "should be the only block with a previous_hash of nil"

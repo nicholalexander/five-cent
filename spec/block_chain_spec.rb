@@ -37,6 +37,14 @@ require 'spec_helper.rb'
 
     end
 
+    context "initialize" do
+      it "should have a genesis block at position 0" do
+        block_chain = BlockChain.new
+        expect(block_chain.blocks[0].data).to eq(:genesis_block)
+      end 
+
+    end
+
     it "should be the only block with a previous_hash of nil"
     it "should be the only block with an index of 0"
     it "should be the only blcok with a timestamp of 0"

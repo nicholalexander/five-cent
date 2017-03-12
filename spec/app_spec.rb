@@ -22,4 +22,12 @@ describe "five-cent" do
     end
   end
 
+  context "initialize" do
+    it "should create a blockchain" do
+    end
+
+
+  end
+
+
 end
